@@ -1,0 +1,5 @@
+Just works. At least when run under uWSGI.
+Has nice viewer for testing.
+
+Put it somewhere, create "layers" directory, put your .mbtiles in it.
+Change path in tilemap.ini, use it for uWSGI.
