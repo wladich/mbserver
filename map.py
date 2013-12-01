@@ -26,6 +26,7 @@ class App(object):
 <!DOCTYPE html>
 <html>
     <header>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css" />
         <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>    </header>
         <script>
