@@ -58,7 +58,7 @@ class App(object):
             
         </script>
     </header>
-    <body>
+    <body style="margin: 0">
         <div id="map" style="height: 500px"></div>
 
     </body>
