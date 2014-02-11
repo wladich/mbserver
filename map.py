@@ -34,7 +34,7 @@ class App(object):
             var layers = %s;
 
             function updateMapSize() {
-                document.getElementById('map').style.height=(window.innerHeight-20)+'px';
+                document.getElementById('map').style.height=(window.innerHeight)+'px';
             }
 
             function setUpMap(){
