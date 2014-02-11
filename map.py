@@ -28,7 +28,8 @@ class App(object):
     <header>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css" />
-        <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>    </header>
+        <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
+        <script src="https://raw2.github.com/mlevans/leaflet-hash/master/leaflet-hash.js"></script>
         <script>
             var layers = %s;
 
@@ -49,14 +50,14 @@ class App(object):
                  }
                  L.control.layers(baseMaps).addTo(map);
                  map.setView([55, 36], 9);
-
+                 var hash = new L.Hash(map);
             }
 
             window.onload = setUpMap;
             window.onresize = updateMapSize;
             
         </script>
-
+    </header>
     <body>
         <div id="map" style="height: 500px"></div>
 
