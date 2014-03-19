@@ -12,12 +12,14 @@ class App(object):
         return layers
 
     def not_found(self, reason='Not found'):
-        self.start_response('404 Not found', [])
+        self.start_response('404 Not found', [('Access-Control-Allow-Origin', '*')])
         return [reason]
 
     def ok(self, output, content_type):
-        response_headers = [('Content-type', content_type),
-                        ('Content-Length', str(len(output)))]
+        response_headers = [
+            ('Content-type', content_type),
+            ('Content-Length', str(len(output))),
+            ('Access-Control-Allow-Origin', '*')]
         self.start_response('200 OK', response_headers)
         return [output]
 
