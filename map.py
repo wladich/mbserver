@@ -32,15 +32,16 @@ class App(object):
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css" />
         <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
         <script src="https://rawgithub.com/mlevans/leaflet-hash/master/leaflet-hash.js"></script>
+        <style>
+            body, html, #map {
+             height: 100%;
+            }
+        </style>
+
         <script>
             var layers = %s;
 
-            function updateMapSize() {
-                document.getElementById('map').style.height=(window.innerHeight)+'px';
-            }
-
             function setUpMap(){
-                 updateMapSize();
                  map = new L.Map('map');
                  baseMaps = {};
                  for (i=0; i < layers.length; i++) {
@@ -56,12 +57,10 @@ class App(object):
             }
 
             window.onload = setUpMap;
-            window.onresize = updateMapSize;
-            
         </script>
     </header>
     <body style="margin: 0">
-        <div id="map" style="height: 500px"></div>
+        <div id="map"></div>
 
     </body>
 </html>
