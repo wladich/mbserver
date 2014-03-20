@@ -34,7 +34,7 @@ class App(object):
         <script src="https://rawgithub.com/mlevans/leaflet-hash/master/leaflet-hash.js"></script>
         <style>
             body, html, #map {
-             height: 100%;
+             height: 100%%;
             }
         </style>
 
