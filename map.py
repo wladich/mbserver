@@ -42,16 +42,18 @@ class App(object):
             var layers = %s;
 
             function setUpMap(){
-                 map = new L.Map('map');
+                 map = new L.Map('map', {fadeAnimation: false});
                  baseMaps = {};
                  for (i=0; i < layers.length; i++) {
                     name = layers[i][0];
                     url = layers[i][1];
                     layer  = new L.TileLayer(url, {tms: true});
-                    layer.addTo(map);
                     baseMaps[name] = layer;
+                    if (i==0) {
+                        layer.addTo(map);
+                    }
                  }
-                 L.control.layers(baseMaps).addTo(map);
+                 L.control.layers(baseMaps, {}, {collapsed: false}).addTo(map);
                  map.setView([55, 36], 9);
                  var hash = new L.Hash(map);
             }
