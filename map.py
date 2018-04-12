@@ -69,7 +69,7 @@ class App(object):
 '''
         import json
         layers = self.get_layers().keys()
-        layers = [(layer, '%s://%s/%s/{z}/{x}/{y}' % (self.environ['UWSGI_SCHEME'], self.environ['HTTP_HOST'], layer)) for layer in layers]
+        layers = [(layer, '%s://%s/%s/{z}/{x}/{y}' % (self.environ.get('UWSGI_SCHEME', 'http'), self.environ['HTTP_HOST'], layer)) for layer in layers]
         return self.ok(html % json.dumps(layers), 'text/html')
         
 #    def layers(self):
