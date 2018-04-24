@@ -29,7 +29,7 @@ class App(object):
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@0.7.7/dist/leaflet.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
         <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
         <script src="https://rawgithub.com/mlevans/leaflet-hash/master/leaflet-hash.js"></script>
         <style>
