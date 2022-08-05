@@ -104,7 +104,10 @@ class App(object):
             return self.tile()
 
 
-
 def application(environ, start_response):
     return App(environ, start_response).route()
 
+
+if __name__ == '__main__':
+    from wsgiref.simple_server import make_server
+    make_server('127.0.0.1', 8080, application).serve_forever()
