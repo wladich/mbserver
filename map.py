@@ -1,5 +1,5 @@
 import os
-import  pysqlite2.dbapi2 as sqlite
+import sqlite3 as sqlite
 
 
 class App(object):
@@ -11,11 +11,11 @@ class App(object):
         layers = dict((s.rsplit('.', 1)[0], s) for s in os.listdir('layers'))
         return layers
 
-    def not_found(self, reason='Not found'):
+    def not_found(self, reason: str = b'Not found'):
         self.start_response('404 Not found', [('Access-Control-Allow-Origin', '*')])
-        return [reason]
+        return [reason.encode('utf-8')]
 
-    def ok(self, output, content_type):
+    def ok(self, output: bytes, content_type):
         response_headers = [
             ('Content-type', content_type),
             ('Content-Length', str(len(output))),
@@ -70,7 +70,7 @@ class App(object):
         import json
         layers = self.get_layers().keys()
         layers = [(layer, '%s://%s/%s/{z}/{x}/{y}' % (self.environ.get('UWSGI_SCHEME', 'http'), self.environ['HTTP_HOST'], layer)) for layer in layers]
-        return self.ok(html % json.dumps(layers), 'text/html')
+        return self.ok((html % json.dumps(layers)).encode('utf-8'), 'text/html')
         
 #    def layers(self):
 #        import json
@@ -90,9 +90,9 @@ class App(object):
         filename = 'layers/' + layers[layer]
         conn = sqlite.connect(filename)
         row = conn.execute('select tile_data from tiles where zoom_level=? AnD tile_column=? AND tile_row=?', (z, x, y)).fetchone()
-        if row  is None:
+        if row is None:
             return self.not_found('Tile z=%s x=%s y=%s' % (z, x, y))
-        return self.ok(str(row[0]), 'image/png')
+        return self.ok(row[0], 'image/png')
 
     def route(self):
         path = self.environ['PATH_INFO']
